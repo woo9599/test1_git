@@ -1,0 +1,24 @@
+{% extends "book/layout.html" %}
+
+{% block content %}
+
+<h2>{{ genre.name }}</h2>
+
+<img src="{{ genre.photo.url }}" style="width: 100px;" />
+
+<h3>관련 도서</h3>
+
+<ul>
+    {% for book in genre.book_set.all %}
+    <li>
+        <img src="{{ book.image.url }}" style="width: 50px;" />
+        <a href="/book/{{ book.pk }}/book/">{{ book.title }}</a>
+            {{ book.writer }}
+            {{ book.publisher }}
+            {{ book.price }}
+    </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}
+
